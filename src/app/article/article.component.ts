@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ArticleService } from '../article.service';
+import { Article } from '../article';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-article',
@@ -7,4 +10,15 @@ import { Component } from '@angular/core';
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
 })
-export class ArticleComponent {}
+export class ArticleComponent {
+  article: Article;
+
+  constructor(
+    private route: ActivatedRoute,
+    private articleService: ArticleService,
+  ) {
+    this.article = articleService.getArticle(
+      route.snapshot.paramMap.get('id') as string,
+    );
+  }
+}

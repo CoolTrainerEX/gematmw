@@ -10,9 +10,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  articles;
+  articles: { id: string; title: string; author: string; img: string }[];
 
   constructor(private articleService: ArticleService) {
-    this.articles = articleService.articles;
+    this.articles = articleService.getArticles;
   }
 }

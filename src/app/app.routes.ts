@@ -21,8 +21,12 @@ export const routes: Routes = [
     component: ArticleComponent,
   },
   {
-    path: '**',
+    path: 'pagenotfound',
     title: 'Page not found',
     component: PageNotFoundComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'pagenotfound',
   },
 ];
