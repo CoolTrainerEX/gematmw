@@ -1,11 +1,20 @@
 <div class="flex flex-wrap gap-10">
   @for (article of articles; track article.author) {
-    <div class="card w-60 bg-base-300 shadow-xl">
-      <figure class="my-0 h-40">
-        <img [src]="article.img" alt="Shoes" class="object-fill" />
+    <div
+      [routerLink]="['article', article.id]"
+      class="group card w-60 bg-base-300 shadow-xl transition hover:bg-neutral"
+    >
+      <figure class="my-0 h-40 transition group-hover:bg-neutral-content">
+        <img
+          [src]="article.img"
+          alt="Shoes"
+          class="object-fill transition group-hover:opacity-25"
+        />
       </figure>
-      <div class="card-body">
-        <h2 class="card-title">{{ article.title }}</h2>
+      <div class="card-body transition group-hover:text-neutral-content">
+        <h2 class="card-title transition group-hover:text-neutral-content">
+          {{ article.title }}
+        </h2>
         <p>{{ article.author }}</p>
       </div>
     </div>
