@@ -4,5 +4,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ArticleService {
+  articles = [
+    {
+      title: 'yes',
+      author: 'no',
+      content: 'yes',
+    },
+    {
+      title: 'no',
+      author: 'yes',
+      content: 'yes',
+    },
+  ];
   constructor() {}
 }
