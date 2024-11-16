@@ -11,6 +11,7 @@ import {
 
 import { routes } from './app.routes';
 import { Title } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class TemplatePageTitleStrategy extends TitleStrategy {
@@ -31,5 +32,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     { provide: TitleStrategy, useClass: TemplatePageTitleStrategy },
+    provideHttpClient(),
   ],
 };
