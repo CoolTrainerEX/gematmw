@@ -20,7 +20,13 @@ export class ArticleService {
     private router: Router,
     private http: HttpClient,
   ) {
-    const noOfArticles = 3;
+    let noOfArticles = 0;
+
+    http
+      .get('https://cooltrainerex.github.io/gematmw-articles/noOfArticles.json')
+      .subscribe((value) => {
+        noOfArticles = (value as { value: number }).value;
+      });
 
     for (let i = 0; i < noOfArticles; i++) {
       http
