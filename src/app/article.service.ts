@@ -23,28 +23,16 @@ export class ArticleService {
     const noOfArticles = 3;
 
     for (let i = 0; i < noOfArticles; i++) {
-      let article: Article = ArticleService.emptyArticle;
-
-      http.get(`assets/${i}.json`).subscribe((file) => {
-        article = file as Article;
-      });
-
-      this.articles.push(article);
+      http
+        .get(`https://cooltrainerex.github.io/gematmw-articles/${i}.json`)
+        .subscribe((article) => {
+          this.articles.push(article as Article);
+        });
     }
   }
 
-  public get getArticles(): {
-    id: string;
-    title: string;
-    author: string;
-    img: string;
-  }[] {
-    return this.articles.map(({ id, title, author, img }) => ({
-      id,
-      title,
-      author,
-      img,
-    }));
+  public get getArticles(): Article[] {
+    return this.articles;
   }
 
   getArticle(id: string): Article {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ArticleService } from '../article.service';
 import { RouterLink } from '@angular/router';
+import { Article } from '../article';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  articles: { id: string; title: string; author: string; img: string }[];
+  articles: Article[];
 
   constructor(private articleService: ArticleService) {
     this.articles = articleService.getArticles;
