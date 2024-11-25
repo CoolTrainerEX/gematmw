@@ -20,21 +20,17 @@ export class ArticleService {
     private router: Router,
     private http: HttpClient,
   ) {
-    let noOfArticles = 0;
-
     http
       .get('https://cooltrainerex.github.io/gematmw-articles/noOfArticles.json')
       .subscribe((value) => {
-        noOfArticles = (value as { value: number }).value;
+        for (let i = 0; i < (value as { value: number }).value; i++) {
+          http
+            .get(`https://cooltrainerex.github.io/gematmw-articles/${i}.json`)
+            .subscribe((article) => {
+              this.articles.push(article as Article);
+            });
+        }
       });
-
-    for (let i = 0; i < noOfArticles; i++) {
-      http
-        .get(`https://cooltrainerex.github.io/gematmw-articles/${i}.json`)
-        .subscribe((article) => {
-          this.articles.push(article as Article);
-        });
-    }
   }
 
   public get getArticles(): Article[] {
