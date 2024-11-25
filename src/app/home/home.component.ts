@@ -13,7 +13,7 @@ import { Article } from '../article';
 export class HomeComponent {
   articles: Article[];
 
-  constructor(private articleService: ArticleService) {
+  constructor(private readonly articleService: ArticleService) {
     this.articles = articleService.getArticles;
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ArticleService } from '../article.service';
 import { Article } from '../article';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-article',
@@ -11,14 +11,22 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './article.component.scss',
 })
 export class ArticleComponent {
-  article: Article;
+  article: Article = { id: '', title: '', author: '', img: '', content: '' };
 
   constructor(
-    private route: ActivatedRoute,
-    private articleService: ArticleService,
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly articleService: ArticleService,
   ) {
-    this.article = articleService.getArticle(
-      route.snapshot.paramMap.get('id') as string,
-    );
+    articleService
+      .getArticle(route.snapshot.paramMap.get('id') as string)
+      .subscribe({
+        next: (value) => {
+          this.article = value;
+        },
+        error: () => {
+          router.navigate(['pagenotfound']);
+        },
+      });
   }
 }

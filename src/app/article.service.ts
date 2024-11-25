@@ -1,25 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Article } from './article';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticleService {
-  private static readonly emptyArticle: Article = {
-    id: '',
-    title: '',
-    author: '',
-    img: '',
-    content: '',
-  };
   private articles: Article[] = [];
 
-  constructor(
-    private router: Router,
-    private http: HttpClient,
-  ) {
+  constructor(private readonly http: HttpClient) {
     http
       .get('https://cooltrainerex.github.io/gematmw-articles/noOfArticles.json')
       .subscribe((value) => {
@@ -37,12 +27,12 @@ export class ArticleService {
     return this.articles;
   }
 
-  getArticle(id: string): Article {
+  getArticle(id: string): Observable<Article> {
     const article = this.articles.find((article) => article.id == id);
-    if (article) return article;
-    else this.router.navigate(['pagenotfound']);
-
-    // resolve ts
-    return ArticleService.emptyArticle;
+    if (article) return of(article);
+    else
+      return this.http.get(
+        `https://cooltrainerex.github.io/gematmw-articles/${id}.json`,
+      ) as Observable<Article>;
   }
 }
