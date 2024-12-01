@@ -1,6 +1,6 @@
 <h1>{{ article.title }}</h1>
 <p>Written by: {{ article.author }}</p>
-<figure class="mb-40 mt-20 h-40 overflow-hidden">
+<figure class="mb-40 mt-20 flex h-40 items-center overflow-hidden">
   <img [src]="article.img" alt="Article Image" class="object-fill" />
 </figure>
 <article [innerHTML]="article.content"></article>
