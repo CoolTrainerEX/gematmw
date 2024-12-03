@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ArticleService } from '../article.service';
 import { Article } from '../article';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article',
@@ -16,6 +17,7 @@ export class ArticleComponent {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
+    private readonly title: Title,
     private readonly articleService: ArticleService,
   ) {
     articleService
@@ -23,6 +25,7 @@ export class ArticleComponent {
       .subscribe({
         next: (value) => {
           this.article = value;
+          title.setTitle(`GEMATMW Group 1 | ${value.title}`);
         },
         error: () => {
           router.navigate(['pagenotfound']);
