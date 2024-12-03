@@ -1,0 +1,15 @@
+@for (documentation of documentations; track documentation.date) {
+  <div class="collapse collapse-arrow bg-base-300">
+    <input type="radio" checked="checked" />
+    <div class="collapse-title">
+      <h1>
+        {{ documentation.date.getMonth() + 1 }}/{{
+          documentation.date.getDate()
+        }}/{{ documentation.date.getFullYear() }}
+      </h1>
+    </div>
+    <div class="collapse-content">
+      <p>hello</p>
+    </div>
+  </div>
+}
