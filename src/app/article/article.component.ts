@@ -25,7 +25,7 @@ export class ArticleComponent {
       .subscribe({
         next: (value) => {
           this.article = value;
-          title.setTitle(`GEMATMW Group 1 | ${value.title}`);
+          title.setTitle(`GEMATMW Group 1 | ${this.article.title}`);
         },
         error: () => {
           router.navigate(['pagenotfound']);
