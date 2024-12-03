@@ -21,6 +21,7 @@ export class DocumentationComponent {
         for (const documentation of value as Documentation[]) {
           this.documentations.push({
             date: new Date(documentation.date),
+            title: documentation.title,
             content: documentation.content,
           });
         }
