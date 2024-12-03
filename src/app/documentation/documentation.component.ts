@@ -15,7 +15,7 @@ export class DocumentationComponent {
   constructor(private readonly http: HttpClient) {
     http
       .get(
-        'https://cooltrainerex.github.io/gematmw-articles/documentation.json',
+        'https://cooltrainerex.github.io/gematmw-articles/documentations.json',
       )
       .subscribe((value) => {
         for (const documentation of value as Documentation[]) {
