@@ -9,8 +9,6 @@
         }}/{{ documentation.date.getFullYear() }}
       </p>
     </div>
-    <div class="collapse-content">
-      {{ documentation.content }}
-    </div>
+    <div class="collapse-content" [innerHTML]="documentation.content"></div>
   </div>
 }
