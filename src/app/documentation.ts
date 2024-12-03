@@ -1,5 +1,6 @@
 export interface Documentation {
-  date: Date;
   title: string;
+  date: Date;
+  img: string;
   content: string;
 }

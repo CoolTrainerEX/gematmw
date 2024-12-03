@@ -20,8 +20,9 @@ export class DocumentationComponent {
       .subscribe((value) => {
         for (const documentation of value as Documentation[]) {
           this.documentations.push({
-            date: new Date(documentation.date),
             title: documentation.title,
+            date: new Date(documentation.date),
+            img: documentation.img,
             content: documentation.content,
           });
         }
