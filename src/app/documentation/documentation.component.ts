@@ -18,12 +18,12 @@ export class DocumentationComponent {
         'https://cooltrainerex.github.io/gematmw-articles/documentation.json',
       )
       .subscribe((value) => {
-        const documentations = value as Documentation[];
-        for (let i = 0; i < documentations.length; i++)
-          this.documentations[i] = {
-            date: new Date(documentations[i].date),
-            content: documentations[i].content,
-          };
+        for (const documentation of value as Documentation[]) {
+          this.documentations.push({
+            date: new Date(documentation.date),
+            content: documentation.content,
+          });
+        }
       });
   }
 }
